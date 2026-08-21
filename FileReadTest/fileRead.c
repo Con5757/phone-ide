@@ -1,14 +1,20 @@
 #include <stdio.h>
 
-char characterize(const char* source) {
-    int i = 0;
-    
-    if (source == NULL || source[0] == '\0') {
-        return '\0';
-    }
-    
-    while (source[i] != '\0') {
-        i++;
-    }
-    return source[i - 1];
+char readFile(const char* file) {
+        FILE *file;
+        
+        file = fopen(file, "r")
+        if (file == NULL) {
+            perror("couldn't find file");
+            return NULL;
+        }
+        
+        char* buffer = (char *)malloc(buffer, 0, file);
+        if (buffer == NULL) {
+            perror("couldn't alloc into buffer");
+            return NULL;
+        }
+        
+        fclose(file)
+        free
 }
