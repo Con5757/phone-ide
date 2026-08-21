@@ -10,12 +10,19 @@ char readFile(const char* file) {
             return NULL;
         }
         
-        char* buffer = (char *)malloc(buffer, 0, file);
-        if (buffer == NULL) {
-            perror("couldn't alloc into buffer");
+        fseek(file, 0, SEEK_END);
+        long byteLen = ftell(file);
+        rewind(file);
+        
+        char* memory = (char *)malloc(byteLen + 1);
+        if (memory == NULL) {
+            perror("couldn't alloc into mem");
             return NULL;
         }
         
-        fclose(file)
-        free
+        size_t text = fread(memory, 1, byteLen, file);
+        memory[text] = '\0';
+        
+        fclose(file);
+        return memory;
 }
